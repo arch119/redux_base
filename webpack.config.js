@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -10,6 +11,7 @@ module.exports = {
   devServer: {
   	contentBase: './dist'
   },
+  plugins: [new HtmlWebpackPlugin()],
   module:{
   	rules : [
        {
@@ -24,6 +26,14 @@ module.exports = {
          use: [
            'file-loader'
          ]
+       },
+       {
+        test: /\.jsx?$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: [ 'react', 'es2015'] },
+        }]
        }
   	]
   }

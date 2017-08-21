@@ -1,5 +1,7 @@
-import { createStore } from 'redux'
-
+//import { createStore } from 'redux'
+const { createStore, testStore } =  require('./my_redux');
+const { testCounter } = require('./counter');
+import {fnA, fnB } from './purees6';
 /**
  * This is a reducer, a pure function with (state, action) => state signature.
  * It describes how an action transforms the state into the next state.
@@ -23,8 +25,12 @@ function counter(state = 0, action) {
   }
 }
 
-
 export default function helloRedux(){
+	testStore();
+	testCounter();
+	fnA();
+	fnB();
+
 	// Create a Redux store holding the state of your app.
 	// Its API is { subscribe, dispatch, getState }.
 	let store = createStore(counter)
@@ -33,16 +39,14 @@ export default function helloRedux(){
 	// Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
 	// However it can also be handy to persist the current state in the localStorage.
 
-	store.subscribe(() =>
-	  console.log(store.getState())
-	)
+	const render = ()=>{
+	  document.getElementById('redux').textContent = store.getState()
+	};
 
-	// The only way to mutate the internal state is to dispatch an action.
-	// The actions can be serialized, logged or stored and later replayed.
-	store.dispatch({ type: 'INCREMENT' })
-	// 1
-	store.dispatch({ type: 'INCREMENT' })
-	// 2
-	store.dispatch({ type: 'DECREMENT' })
-	// 1	
+	store.subscribe(render);
+	render();
+
+	document.addEventListener('click', ()=>{
+		store.dispatch({type: 'INCREMENT'})
+	});
 }

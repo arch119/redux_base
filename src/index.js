@@ -2,6 +2,7 @@ import _ from 'lodash';
 import './style.css';
 import printMe from './print.js';
 import helloRedux from './redux/hello_redux';
+import {HelloReact} from './react/hello';
 
 function component() {
   var element = document.createElement('div');
@@ -19,5 +20,20 @@ function component() {
   return element;
 }
 
+function reduxComponent(){
+	var element = document.createElement('div');
+	element.setAttribute('id', 'redux');
+	return element;
+}
+
+function reactComponent(){
+	var element = document.createElement('div');
+	element.setAttribute('id', 'root');
+	return element;
+}
+
 document.body.appendChild(component());
+document.body.appendChild(reduxComponent());
+document.body.appendChild(reactComponent());
 helloRedux();
+HelloReact();
