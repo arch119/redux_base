@@ -3,6 +3,7 @@ import './style.css';
 import printMe from './print.js';
 import helloRedux from './redux/hello_redux';
 import {HelloReact} from './react/hello';
+import {functional} from './lib/functional';
 
 function component() {
   var element = document.createElement('div');
@@ -37,3 +38,4 @@ document.body.appendChild(reduxComponent());
 document.body.appendChild(reactComponent());
 helloRedux();
 HelloReact();
+functional();
