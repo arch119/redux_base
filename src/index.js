@@ -1,9 +1,11 @@
 import _ from 'lodash';
-import './style.css';
+import './style/style.css';
+import './style/tictactoe.css';
 import printMe from './print.js';
 import helloRedux from './redux/hello_redux';
 import {HelloReact} from './react/hello';
 import {functional} from './lib/functional';
+import {initTicTacToe} from './tictactoe/index'
 
 function component() {
   var element = document.createElement('div');
@@ -33,9 +35,12 @@ function reactComponent(){
 	return element;
 }
 
-document.body.appendChild(component());
-document.body.appendChild(reduxComponent());
-document.body.appendChild(reactComponent());
-helloRedux();
-HelloReact();
-functional();
+function test(){
+  document.body.appendChild(component());
+  document.body.appendChild(reduxComponent());
+  document.body.appendChild(reactComponent());
+  helloRedux();
+  HelloReact();
+}
+
+initTicTacToe();
