@@ -7,6 +7,7 @@ import {HelloReact} from './react/hello';
 import {functional} from './lib/functional';
 import {initTicTacToe} from './tictactoe/index'
 
+
 function component() {
   var element = document.createElement('div');
   var btn = document.createElement('button');
@@ -43,4 +44,5 @@ function test(){
   HelloReact();
 }
 
-initTicTacToe();
+//initTicTacToe();
+
