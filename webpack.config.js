@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
-  entry: './src/tutorial/jsx/index.js',
+  entry: './src/todo/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
