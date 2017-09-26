@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CheckerPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
-  entry: './src/index_todo.js',
+  entry: './src/tutorial/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -11,7 +12,10 @@ module.exports = {
   devServer: {
   	contentBase: './dist'
   },
-  plugins: [new HtmlWebpackPlugin()],
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  },
+  plugins: [new HtmlWebpackPlugin(), new CheckerPlugin()],
   module:{
   	rules : [
        {
@@ -28,11 +32,16 @@ module.exports = {
          ]
        },
        {
+         test: /\.tsx?$/,
+         use: 'awesome-typescript-loader',
+         exclude: /node_modules/ 
+       },
+       {
         test: /\.jsx?$/,
         exclude: [/node_modules/],
         use: [{
           loader: 'babel-loader',
-          options: { presets: [ 'react', 'es2015'] },
+          options: { presets: [ 'react', 'es2015', 'stage-2'] },
         }]
        }
   	]
