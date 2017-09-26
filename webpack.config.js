@@ -3,14 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CheckerPlugin } = require('awesome-typescript-loader')
 
 module.exports = {
-  entry: './src/todo/index.js',
+  entry: './src/reddit/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   devtool: 'inline-source-map',
   devServer: {
-  	contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
